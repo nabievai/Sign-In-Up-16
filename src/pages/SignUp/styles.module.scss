@@ -1,0 +1,68 @@
+
+.container {
+    font-size: 12px;
+    color: var(--secondary-text-light, rgba(27, 43, 65, 0.72));
+    .logo-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+    h1 {
+        font-size: 22px;
+        color: black;
+        margin-bottom: 4px;
+    }
+    input {
+        margin: 5px 0;
+        border-radius: 3px;
+        padding: 18px 0 18px 15px;
+        border: 1px solid var(--contrast-20-light, rgba(28, 55, 90, 0.16));
+    }
+    .chexbox-link {
+        display: flex;
+        align-items: center;
+    }
+    .link-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 13px;
+        margin-top: 31px;
+        a {
+            margin-left: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--primary-text-light, #1676F3);
+        }
+    }
+}
+
+label {
+    cursor: pointer;
+}
+
+.input-password {
+    position: relative;
+}
+
+.eye-icon {
+    position: absolute;
+    top: 45%;
+    right: 5%;
+}
+
+
+.forgot-link {
+    color: var(--primary-text-light, #1676F3);
+}
+  
+.error-message {
+    color: red;
+}
+
+.margin {
+    margin-bottom: 16px;
+}
+

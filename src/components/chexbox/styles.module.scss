@@ -1,0 +1,14 @@
+.chexbox {
+    display: flex;
+    align-items: baseline;
+    label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .checkbox {
+        margin-right: 11px;
+        width: 15px;
+        height: 15px;
+    }
+}

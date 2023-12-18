@@ -1,0 +1,114 @@
+.container {
+    font-size: 12px;
+    color: var(--secondary-text-light, rgba(27, 43, 65, 0.72));
+    .logo-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 14px;
+        margin-bottom: 28px;
+    }
+    h1 {
+        font-size: 22px;
+        color: black;
+        margin-bottom: 4px;
+    }
+    .or {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .lines::after {
+        content: '';
+        display: block;
+        width: 126px;
+        border-bottom: 1px solid rgba(28, 52, 84, 0.26);
+    }
+    .google {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 17px 64px;
+        text-decoration: none;
+        border-radius: 4px;
+        border: 1px solid var(--contrast-30-light, rgba(28, 52, 84, 0.26));
+        margin: 28px 0 16px;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        color: var(--secondary-text-light, rgba(27, 43, 65, 0.72));
+    }
+    .google-icon {
+        display: block;
+        width: 19px;
+        height: 19px;
+        background: url('../../assets//icons/Google__G__Logo\ 1.svg');
+        margin-right: 20px;
+    }
+    .or-after::after{
+        content: "OR";
+        color: rgba(28, 52, 84, 0.26);
+        margin: 0 17px;
+    }
+    .btn-login {
+        padding: 17px 145px;
+        border: none;
+        background-color: rgba(22, 118, 243, 1);
+        color: rgba(255, 255, 255, 1);
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    input {
+        margin: 5px 0;
+        border-radius: 3px;
+        padding: 18px 0 18px 15px;
+        border: 1px solid var(--contrast-20-light, rgba(28, 55, 90, 0.16));
+    }
+    .link-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 13px;
+        margin-top: 31px;
+        a {
+            margin-left: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--primary-text-light, #1676F3);
+        }
+    }
+    .chexbox-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+label {
+    cursor: pointer;
+}
+
+.input-password {
+    position: relative;
+}
+
+.eye-icon {
+    position: absolute;
+    top: 45%;
+    right: 5%;
+}
+
+.forgot-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+.error-message {
+    color: red;
+}
+
+.margin {
+    margin-bottom: 16px;
+}

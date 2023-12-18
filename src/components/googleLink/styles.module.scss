@@ -1,0 +1,22 @@
+.google {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 17px 64px;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid var(--contrast-30-light, rgba(28, 52, 84, 0.26));
+    margin: 28px 0 16px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: var(--secondary-text-light, rgba(27, 43, 65, 0.72));
+}
+.google-icon {
+    display: block;
+    width: 19px;
+    height: 19px;
+    background: url('../../assets//icons/Google__G__Logo\ 1.svg');
+    margin-right: 20px;
+}
