@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import GoogleLink from '../../components/googleLink'
 import OrDesign from '../../components/orDesign'
 import Button from '../../components/button'
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup'
 
 import Logo from '../../assets/icons/Logo 1.png'
 
@@ -15,11 +17,18 @@ import Chexbox from '../../components/chexbox';
 import styles from './styles.module.scss'
 
 const LogIn = () => {
+  const schema = yup.object().shape({
+    password: yup.number().min(10, 'число должно быть больше 10'),
+    // userEmail: yup.string().email('Поле должно быть email')
+    email: yup.string().matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, 'Поле должно быть email')
+  })
+
   const formMethods = useForm({
     defaultValues: {
-      Email: '',
-      Password: ''
+      email: '',
+      password: ''
     },
+    resolver: yupResolver(schema),
     mode: 'onBlur'
   });
 
@@ -31,10 +40,10 @@ const LogIn = () => {
     setShowPassword(!showPassword);
   };
 
-  const isEmailValid = (value) => {
-    const emailWithoutDomain = value.split('@')[0];
-    return emailWithoutDomain.length >= 5;
-  };
+  // const isEmailValid = (value) => {
+  //   const emailWithoutDomain = value.split('@')[0];
+  //   return emailWithoutDomain.length >= 5;
+  // };
 
 
   const onSubmit = (data) => {
@@ -55,13 +64,13 @@ const LogIn = () => {
         <form onSubmit={formMethods.handleSubmit(onSubmit)}>
         <div className={styles['margin']}>
         <Controller
-            name='Email'
+            name='email'
             control={formMethods.control}
-            rules={{
-              validate: {
-                emailLength: isEmailValid
-              }
-            }}
+            // rules={{
+            //   validate: {
+            //     emailLength: isEmailValid
+            //   }
+            // }}
             render={({ field, fieldState }) => (
               <div>
                 <CustomInput
@@ -80,9 +89,9 @@ const LogIn = () => {
          <div>
          <div className={styles['input-password']}>
           <Controller
-            name='Password'
+            name='password'
             control={formMethods.control}
-            rules={{ minLength: 5 }}
+            // rules={{ minLength: 5 }}
             render={({ field, fieldState }) => (
               <div className={styles['input-password']}>
                 <CustomInput

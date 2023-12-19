@@ -7,12 +7,23 @@ import ChexBox from '../../components/chexbox'
 import OrDesign from "../../components/orDesign";
 import GoogleLink from "../../components/googleLink";
 import Button from "../../components/button";
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup'
 
 import Logo from "../../assets/icons/Logo 1.png";
 
 import styles from "./styles.module.scss";
 
 const FormContainer = () => {
+  const schema = yup.object().shape({
+    userFullName: yup.string().min(5, 'поле userName должно состоять из 5 символов'),
+    userPassword: yup.string().required('Password is required'),
+    userConfirmPassword: yup.string()
+       .oneOf([yup.ref('userPassword'), null], 'Passwords must match'),
+    // userEmail: yup.string().email('Поле должно быть email')
+    userEmail: yup.string().matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, 'Поле должно быть email')
+  })
+
   const formMethods = useForm({
     defaultValues: {
       userFullName: "",
@@ -21,6 +32,7 @@ const FormContainer = () => {
       userConfirmPassword: "",
       agree: ""
     },
+    resolver: yupResolver(schema),
     mode: "onBlur",
   });
 
@@ -32,10 +44,10 @@ const FormContainer = () => {
     setShowPassword(!showPassword);
   };
 
-  const passwordMatchValidator = (value) => {
-    const password = formMethods.getValues("userPassword");
-    return value === password || "Passwords should match";
-  };
+  // const passwordMatchValidator = (value) => {
+  //   const password = formMethods.getValues("userPassword");
+  //   return value === password || "Passwords should match";
+  // };
 
   const onSubmit = (data) => {
     console.log("data", data);
@@ -43,10 +55,10 @@ const FormContainer = () => {
   
 
 
-const isEmailValid = (value) => {
-  const emailWithoutDomain = value.split('@')[0];
-  return emailWithoutDomain.length >= 5;
-};
+// const isEmailValid = (value) => {
+//   const emailWithoutDomain = value.split('@')[0];
+//   return emailWithoutDomain.length >= 5;
+// };
 
 
 
@@ -66,7 +78,7 @@ const isEmailValid = (value) => {
         <Controller
             name="userFullName"
             control={formMethods.control}
-            rules={{ minLength: 5 }}
+            // rules={{ minLength: 5 }}
             render={({ field, fieldState }) => (
               <CustomInput
                 className={styles["input"]}
@@ -85,11 +97,11 @@ const isEmailValid = (value) => {
           <Controller
             name='userEmail'
             control={formMethods.control}
-            rules={{
-              validate: {
-                emailLength: isEmailValid
-              }
-            }}
+            // rules={{
+            //   validate: {
+            //     emailLength: isEmailValid
+            //   }
+            // }}
             render={({ field, fieldState }) => (
               <div>
                 <CustomInput
@@ -111,7 +123,7 @@ const isEmailValid = (value) => {
           <Controller
             name='userPassword'
             control={formMethods.control}
-            rules={{ minLength: 5 }}
+            // rules={{ minLength: 5 }}
             render={({ field, fieldState }) => (
               <div className={styles['input-password']}>
                 <CustomInput
@@ -136,7 +148,7 @@ const isEmailValid = (value) => {
             <Controller
               name="userConfirmPassword"
               control={formMethods.control}
-              rules={{ validate: passwordMatchValidator }}
+              // rules={{ validate: passwordMatchValidator }}
               render={({ field, fieldState }) => (
                 <>
                   <CustomInput
